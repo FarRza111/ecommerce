@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+jinja2
+SQLAlchemy
+alembic
+passlib[bcrypt]
+pydantic
+python-multipart
+fastapi-mail
