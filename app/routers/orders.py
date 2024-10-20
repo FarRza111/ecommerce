@@ -49,3 +49,9 @@ def create_order(order: schemas.OrderCreate, background_tasks: BackgroundTasks, 
     background_tasks.add_task(FastMail(conf).send_message, message)
 
     return db_order
+
+
+
+
+
+
