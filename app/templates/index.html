@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cakes and Bakes</title>
+</head>
+<body>
+    <h1>Welcome to Cakes and Bakes!</h1>
+
+    <h2>Product Categories</h2>
+    <ul>
+        {% for category in categories %}
+        <li><a href="/products/?category={{ category }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Products</h2>
+    <ul>
+        {% for product in products %}
+        <li>
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" width="100" />
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
