@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Orders</title>
+</head>
+<body>
+    <h1>Your Orders</h1>
+
+    {% if orders %}
+        <ul>
+        {% for order in orders %}
+            <li>
+                <h3>Order ID: {{ order.id }}</h3>
+                <p>Product: {{ order.product.name }}</p>
+                <p>Quantity: {{ order.quantity }}</p>
+                <p>Total Price: ${{ order.total_price }}</p>
+                <p>Date: {{ order.created_at }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no orders yet.</p>
+    {% endif %}
+</body>
+</html>
