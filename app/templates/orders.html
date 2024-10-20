@@ -15,7 +15,7 @@
                 <p>Product: {{ order.product.name }}</p>
                 <p>Quantity: {{ order.quantity }}</p>
                 <p>Total Price: ${{ order.total_price }}</p>
-                <p>Date: {{ order.created_at }}</p>
+                <p>Date: {{ order.created_at }}</p>  <!-- Optional date field if you add it -->
             </li>
         {% endfor %}
         </ul>
