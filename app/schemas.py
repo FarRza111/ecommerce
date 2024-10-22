@@ -1,5 +1,6 @@
-from pydantic import BaseModel
 from typing import List
+from pydantic import BaseModel
+
 
 class ProductBase(BaseModel):
     name: str
@@ -8,17 +9,21 @@ class ProductBase(BaseModel):
     image_url: str
     category: str
 
+
 class ProductCreate(ProductBase):
     pass
+
 
 class Product(ProductBase):
     id: int
     class Config:
         orm_mode = True
 
+
 class UserCreate(BaseModel):
     email: str
     password: str
+
 
 class User(BaseModel):
     id: int
@@ -26,17 +31,31 @@ class User(BaseModel):
     class Config:
         orm_mode = True
 
-class OrderBase(BaseModel):
+
+
+class OrderItemCreate(BaseModel):
     product_id: int
     quantity: int
-    total_price: float
 
-class OrderCreate(OrderBase):
-    pass
-
-class Order(OrderBase):
-    id: int
-    user_id: int
-    product: Product
     class Config:
-        orm_mode = True
+        orm_mode = True  # ORM models can be converted to Pydantic models
+
+
+class OrderCreate(BaseModel):
+    items: List[OrderItemCreate] # items of  OrderItemCreate - look below json example 
+    address: str
+    total_price: float  # Optional: If passed by the frontend
+
+    class Config:
+        orm_mode = True  # Enables compatibility with SQLAlchemy models
+
+    # {
+    #   "items": [
+    #     {
+    #       "product_id": 10,
+    #       "quantity": 12322
+    #     }
+    #   ],
+    #   "address": "AZAASA",
+    #   "total_price": 112.334
+    # }
